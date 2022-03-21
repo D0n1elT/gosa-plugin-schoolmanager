@@ -104,16 +104,9 @@ class importaccounts extends plugin
      */
     function execute_phase1($smarty, $quick_import = FALSE)
     {
-        /* Load defaults, if we run in quick import mode */
-        if ($quick_import === FALSE) {
-            $_delim_id                = $_POST['delimiter_id'];
-            $_csv_with_column_headers = $_POST['csv_with_column_headers'];
-        } else {
-            $_delim_id                = -1; // Will load default char later.
-
-            $_csv_with_column_headers = $this->utils->getConfigBoolValue("ignore_first_row_of_csv_file");
-            if ($_csv_with_column_headers === FALSE) unset($_csv_with_column_headers);
-        }
+        // This is the first phase, so no need to worry about quick-import.
+        $_delim_id                = $_POST['delimiter_id'];
+        $_csv_with_column_headers = $_POST['csv_with_column_headers'];
 
         $ret_array = $this->utils->checkUploadedFile();
 
